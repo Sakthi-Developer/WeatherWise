@@ -6,5 +6,6 @@
     <color name="faded">#AEB0B3</color>
     <color name="light_mat_black">#131313</color>
     <color name="transparent">#00000000</color>
-    <color name="red">#E12424</color>
+    <color name="red">#E85555</color>
+    <color name="green">#5EBD5A</color>
 </resources>

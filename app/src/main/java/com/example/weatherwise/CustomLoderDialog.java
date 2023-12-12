@@ -28,6 +28,7 @@ public class CustomLoderDialog extends Dialog {
         WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
         layoutParams.gravity = Gravity.CENTER;
         getWindow().setAttributes(layoutParams);
+        setCancelable(false);
     }
 
 }

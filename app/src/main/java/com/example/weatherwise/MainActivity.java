@@ -2,15 +2,20 @@ package com.example.weatherwise;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,6 +25,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -73,19 +79,43 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                customLoderDialog.show();
 
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
+                View logOutDialog = LayoutInflater.from(MainActivity.this).inflate(R.layout.logout_dialog, null);
 
-                        if (FirebaseAuthManager.getInstance().signOut()) {
-                            customLoderDialog.dismiss();
-                            startActivity(new Intent(MainActivity.this, LogInSignUp.class));
+                Dialog dialog_logout = new Dialog(MainActivity.this);
+                dialog_logout.setContentView(logOutDialog);
+                Objects.requireNonNull(dialog_logout.getWindow()).setGravity(Gravity.CENTER);
+                Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.dialog_background, null);
+                dialog_logout.getWindow().setBackgroundDrawable(drawable);
+                dialog_logout.getWindow().setLayout(700,530);
+                dialog_logout.show();
+                TextView textView = dialog_logout.findViewById(R.id.textView);
+                Button button = dialog_logout.findViewById(R.id.button);
+                Button button1 = dialog_logout.findViewById(R.id.button1);
+
+                button.setOnClickListener(v1 -> {
+                    dialog_logout.dismiss();
+                    customLoderDialog.show();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            if (FirebaseAuthManager.getInstance().signOut()) {
+                                customLoderDialog.dismiss();
+                                startActivity(new Intent(MainActivity.this, LogInSignUp.class));
+                            }
+
                         }
+                    }, 2000);
 
+                });
+
+                button1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog_logout.dismiss();
                     }
-                },2000);
+                });
 
             }
         });
@@ -213,8 +243,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Call<HourlyWeatherResponseModel.Root> call, @NonNull Throwable t) {
                 Log.d("the t", Objects.requireNonNull(t.getMessage()));
-                TextView textView = findViewById(R.id.msg);
-                textView.setText(t.getMessage());
                 Toast.makeText(MainActivity.this, "Weather Forecast Api Failed", Toast.LENGTH_SHORT).show();
             }
         });

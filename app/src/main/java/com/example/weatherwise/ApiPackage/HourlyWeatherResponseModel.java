@@ -10,9 +10,9 @@ public class HourlyWeatherResponseModel {
         public String moonrise;
         public String moonset;
         public String moon_phase;
-        public int moon_illumination;
-        public int is_moon_up;
-        public int is_sun_up;
+        public double moon_illumination;
+        public double is_moon_up;
+        public double is_sun_up;
 
         public String getSunrise() {
             return sunrise;
@@ -54,27 +54,27 @@ public class HourlyWeatherResponseModel {
             this.moon_phase = moon_phase;
         }
 
-        public int getMoon_illumination() {
+        public double getMoon_illumination() {
             return moon_illumination;
         }
 
-        public void setMoon_illumination(int moon_illumination) {
+        public void setMoon_illumination(double moon_illumination) {
             this.moon_illumination = moon_illumination;
         }
 
-        public int getIs_moon_up() {
+        public double getIs_moon_up() {
             return is_moon_up;
         }
 
-        public void setIs_moon_up(int is_moon_up) {
+        public void setIs_moon_up(double is_moon_up) {
             this.is_moon_up = is_moon_up;
         }
 
-        public int getIs_sun_up() {
+        public double getIs_sun_up() {
             return is_sun_up;
         }
 
-        public void setIs_sun_up(int is_sun_up) {
+        public void setIs_sun_up(double is_sun_up) {
             this.is_sun_up = is_sun_up;
         }
     }
@@ -82,7 +82,7 @@ public class HourlyWeatherResponseModel {
     public class Condition{
         public String text;
         public String icon;
-        public int code;
+        public double code;
 
         public String getText() {
             return text;
@@ -100,45 +100,45 @@ public class HourlyWeatherResponseModel {
             this.icon = icon;
         }
 
-        public int getCode() {
+        public double getCode() {
             return code;
         }
 
-        public void setCode(int code) {
+        public void setCode(double code) {
             this.code = code;
         }
     }
 
     public class Current{
-        public int last_updated_epoch;
+        public double last_updated_epoch;
         public String last_updated;
-        public int temp_c;
+        public double temp_c;
         public double temp_f;
-        public int is_day;
+        public double is_day;
         public Condition condition;
         public double wind_mph;
         public double wind_kph;
-        public int wind_degree;
+        public double wind_degree;
         public String wind_dir;
-        public int pressure_mb;
+        public double pressure_mb;
         public double pressure_in;
         public double precip_mm;
-        public int precip_in;
-        public int humidity;
-        public int cloud;
+        public double precip_in;
+        public double humidity;
+        public double cloud;
         public double feelslike_c;
         public double feelslike_f;
-        public int vis_km;
-        public int vis_miles;
-        public int uv;
+        public double vis_km;
+        public double vis_miles;
+        public double uv;
         public double gust_mph;
         public double gust_kph;
 
-        public int getLast_updated_epoch() {
+        public double getLast_updated_epoch() {
             return last_updated_epoch;
         }
 
-        public void setLast_updated_epoch(int last_updated_epoch) {
+        public void setLast_updated_epoch(double last_updated_epoch) {
             this.last_updated_epoch = last_updated_epoch;
         }
 
@@ -150,11 +150,11 @@ public class HourlyWeatherResponseModel {
             this.last_updated = last_updated;
         }
 
-        public int getTemp_c() {
+        public double getTemp_c() {
             return temp_c;
         }
 
-        public void setTemp_c(int temp_c) {
+        public void setTemp_c(double temp_c) {
             this.temp_c = temp_c;
         }
 
@@ -166,11 +166,11 @@ public class HourlyWeatherResponseModel {
             this.temp_f = temp_f;
         }
 
-        public int getIs_day() {
+        public double getIs_day() {
             return is_day;
         }
 
-        public void setIs_day(int is_day) {
+        public void setIs_day(double is_day) {
             this.is_day = is_day;
         }
 
@@ -198,11 +198,11 @@ public class HourlyWeatherResponseModel {
             this.wind_kph = wind_kph;
         }
 
-        public int getWind_degree() {
+        public double getWind_degree() {
             return wind_degree;
         }
 
-        public void setWind_degree(int wind_degree) {
+        public void setWind_degree(double wind_degree) {
             this.wind_degree = wind_degree;
         }
 
@@ -214,11 +214,11 @@ public class HourlyWeatherResponseModel {
             this.wind_dir = wind_dir;
         }
 
-        public int getPressure_mb() {
+        public double getPressure_mb() {
             return pressure_mb;
         }
 
-        public void setPressure_mb(int pressure_mb) {
+        public void setPressure_mb(double pressure_mb) {
             this.pressure_mb = pressure_mb;
         }
 
@@ -238,27 +238,27 @@ public class HourlyWeatherResponseModel {
             this.precip_mm = precip_mm;
         }
 
-        public int getPrecip_in() {
+        public double getPrecip_in() {
             return precip_in;
         }
 
-        public void setPrecip_in(int precip_in) {
+        public void setPrecip_in(double precip_in) {
             this.precip_in = precip_in;
         }
 
-        public int getHumidity() {
+        public double getHumidity() {
             return humidity;
         }
 
-        public void setHumidity(int humidity) {
+        public void setHumidity(double humidity) {
             this.humidity = humidity;
         }
 
-        public int getCloud() {
+        public double getCloud() {
             return cloud;
         }
 
-        public void setCloud(int cloud) {
+        public void setCloud(double cloud) {
             this.cloud = cloud;
         }
 
@@ -278,27 +278,27 @@ public class HourlyWeatherResponseModel {
             this.feelslike_f = feelslike_f;
         }
 
-        public int getVis_km() {
+        public double getVis_km() {
             return vis_km;
         }
 
-        public void setVis_km(int vis_km) {
+        public void setVis_km(double vis_km) {
             this.vis_km = vis_km;
         }
 
-        public int getVis_miles() {
+        public double getVis_miles() {
             return vis_miles;
         }
 
-        public void setVis_miles(int vis_miles) {
+        public void setVis_miles(double vis_miles) {
             this.vis_miles = vis_miles;
         }
 
-        public int getUv() {
+        public double getUv() {
             return uv;
         }
 
-        public void setUv(int uv) {
+        public void setUv(double uv) {
             this.uv = uv;
         }
 
@@ -322,24 +322,24 @@ public class HourlyWeatherResponseModel {
     public class Day{
         public double maxtemp_c;
         public double maxtemp_f;
-        public double mintemp_c;
-        public double mintemp_f;
+        public double mdoubleemp_c;
+        public double mdoubleemp_f;
         public double avgtemp_c;
         public double avgtemp_f;
         public double maxwind_mph;
         public double maxwind_kph;
         public double totalprecip_mm;
         public double totalprecip_in;
-        public int totalsnow_cm;
-        public int avgvis_km;
-        public int avgvis_miles;
-        public int avghumidity;
-        public int daily_will_it_rain;
-        public int daily_chance_of_rain;
-        public int daily_will_it_snow;
-        public int daily_chance_of_snow;
+        public double totalsnow_cm;
+        public double avgvis_km;
+        public double avgvis_miles;
+        public double avghumidity;
+        public double daily_will_it_rain;
+        public double daily_chance_of_rain;
+        public double daily_will_it_snow;
+        public double daily_chance_of_snow;
         public Condition condition;
-        public int uv;
+        public double uv;
 
         public double getMaxtemp_c() {
             return maxtemp_c;
@@ -357,20 +357,20 @@ public class HourlyWeatherResponseModel {
             this.maxtemp_f = maxtemp_f;
         }
 
-        public double getMintemp_c() {
-            return mintemp_c;
+        public double getMdoubleemp_c() {
+            return mdoubleemp_c;
         }
 
-        public void setMintemp_c(double mintemp_c) {
-            this.mintemp_c = mintemp_c;
+        public void setMdoubleemp_c(double mdoubleemp_c) {
+            this.mdoubleemp_c = mdoubleemp_c;
         }
 
-        public double getMintemp_f() {
-            return mintemp_f;
+        public double getMdoubleemp_f() {
+            return mdoubleemp_f;
         }
 
-        public void setMintemp_f(double mintemp_f) {
-            this.mintemp_f = mintemp_f;
+        public void setMdoubleemp_f(double mdoubleemp_f) {
+            this.mdoubleemp_f = mdoubleemp_f;
         }
 
         public double getAvgtemp_c() {
@@ -421,67 +421,67 @@ public class HourlyWeatherResponseModel {
             this.totalprecip_in = totalprecip_in;
         }
 
-        public int getTotalsnow_cm() {
+        public double getTotalsnow_cm() {
             return totalsnow_cm;
         }
 
-        public void setTotalsnow_cm(int totalsnow_cm) {
+        public void setTotalsnow_cm(double totalsnow_cm) {
             this.totalsnow_cm = totalsnow_cm;
         }
 
-        public int getAvgvis_km() {
+        public double getAvgvis_km() {
             return avgvis_km;
         }
 
-        public void setAvgvis_km(int avgvis_km) {
+        public void setAvgvis_km(double avgvis_km) {
             this.avgvis_km = avgvis_km;
         }
 
-        public int getAvgvis_miles() {
+        public double getAvgvis_miles() {
             return avgvis_miles;
         }
 
-        public void setAvgvis_miles(int avgvis_miles) {
+        public void setAvgvis_miles(double avgvis_miles) {
             this.avgvis_miles = avgvis_miles;
         }
 
-        public int getAvghumidity() {
+        public double getAvghumidity() {
             return avghumidity;
         }
 
-        public void setAvghumidity(int avghumidity) {
+        public void setAvghumidity(double avghumidity) {
             this.avghumidity = avghumidity;
         }
 
-        public int getDaily_will_it_rain() {
+        public double getDaily_will_it_rain() {
             return daily_will_it_rain;
         }
 
-        public void setDaily_will_it_rain(int daily_will_it_rain) {
+        public void setDaily_will_it_rain(double daily_will_it_rain) {
             this.daily_will_it_rain = daily_will_it_rain;
         }
 
-        public int getDaily_chance_of_rain() {
+        public double getDaily_chance_of_rain() {
             return daily_chance_of_rain;
         }
 
-        public void setDaily_chance_of_rain(int daily_chance_of_rain) {
+        public void setDaily_chance_of_rain(double daily_chance_of_rain) {
             this.daily_chance_of_rain = daily_chance_of_rain;
         }
 
-        public int getDaily_will_it_snow() {
+        public double getDaily_will_it_snow() {
             return daily_will_it_snow;
         }
 
-        public void setDaily_will_it_snow(int daily_will_it_snow) {
+        public void setDaily_will_it_snow(double daily_will_it_snow) {
             this.daily_will_it_snow = daily_will_it_snow;
         }
 
-        public int getDaily_chance_of_snow() {
+        public double getDaily_chance_of_snow() {
             return daily_chance_of_snow;
         }
 
-        public void setDaily_chance_of_snow(int daily_chance_of_snow) {
+        public void setDaily_chance_of_snow(double daily_chance_of_snow) {
             this.daily_chance_of_snow = daily_chance_of_snow;
         }
 
@@ -493,11 +493,11 @@ public class HourlyWeatherResponseModel {
             this.condition = condition;
         }
 
-        public int getUv() {
+        public double getUv() {
             return uv;
         }
 
-        public void setUv(int uv) {
+        public void setUv(double uv) {
             this.uv = uv;
         }
     }
@@ -516,7 +516,7 @@ public class HourlyWeatherResponseModel {
 
     public class Forecastday{
         public String date;
-        public int date_epoch;
+        public double date_epoch;
         public Day day;
         public Astro astro;
         public ArrayList<Hour> hour;
@@ -529,11 +529,11 @@ public class HourlyWeatherResponseModel {
             this.date = date;
         }
 
-        public int getDate_epoch() {
+        public double getDate_epoch() {
             return date_epoch;
         }
 
-        public void setDate_epoch(int date_epoch) {
+        public void setDate_epoch(double date_epoch) {
             this.date_epoch = date_epoch;
         }
 
@@ -563,45 +563,45 @@ public class HourlyWeatherResponseModel {
     }
 
     public class Hour{
-        public int time_epoch;
+        public double time_epoch;
         public String time;
         public double temp_c;
         public double temp_f;
-        public int is_day;
+        public double is_day;
         public Condition condition;
         public double wind_mph;
         public double wind_kph;
-        public int wind_degree;
+        public double wind_degree;
         public String wind_dir;
-        public int pressure_mb;
+        public double pressure_mb;
         public double pressure_in;
         public double precip_mm;
         public double precip_in;
-        public int humidity;
-        public int cloud;
+        public double humidity;
+        public double cloud;
         public double feelslike_c;
         public double feelslike_f;
         public double windchill_c;
         public double windchill_f;
         public double heatindex_c;
         public double heatindex_f;
-        public double dewpoint_c;
-        public double dewpoint_f;
-        public int will_it_rain;
-        public int chance_of_rain;
-        public int will_it_snow;
-        public int chance_of_snow;
-        public int vis_km;
-        public int vis_miles;
+        public double dewpodouble_c;
+        public double dewpodouble_f;
+        public double will_it_rain;
+        public double chance_of_rain;
+        public double will_it_snow;
+        public double chance_of_snow;
+        public double vis_km;
+        public double vis_miles;
         public double gust_mph;
         public double gust_kph;
-        public int uv;
+        public double uv;
 
-        public int getTime_epoch() {
+        public double getTime_epoch() {
             return time_epoch;
         }
 
-        public void setTime_epoch(int time_epoch) {
+        public void setTime_epoch(double time_epoch) {
             this.time_epoch = time_epoch;
         }
 
@@ -629,11 +629,11 @@ public class HourlyWeatherResponseModel {
             this.temp_f = temp_f;
         }
 
-        public int getIs_day() {
+        public double getIs_day() {
             return is_day;
         }
 
-        public void setIs_day(int is_day) {
+        public void setIs_day(double is_day) {
             this.is_day = is_day;
         }
 
@@ -661,11 +661,11 @@ public class HourlyWeatherResponseModel {
             this.wind_kph = wind_kph;
         }
 
-        public int getWind_degree() {
+        public double getWind_degree() {
             return wind_degree;
         }
 
-        public void setWind_degree(int wind_degree) {
+        public void setWind_degree(double wind_degree) {
             this.wind_degree = wind_degree;
         }
 
@@ -677,11 +677,11 @@ public class HourlyWeatherResponseModel {
             this.wind_dir = wind_dir;
         }
 
-        public int getPressure_mb() {
+        public double getPressure_mb() {
             return pressure_mb;
         }
 
-        public void setPressure_mb(int pressure_mb) {
+        public void setPressure_mb(double pressure_mb) {
             this.pressure_mb = pressure_mb;
         }
 
@@ -709,19 +709,19 @@ public class HourlyWeatherResponseModel {
             this.precip_in = precip_in;
         }
 
-        public int getHumidity() {
+        public double getHumidity() {
             return humidity;
         }
 
-        public void setHumidity(int humidity) {
+        public void setHumidity(double humidity) {
             this.humidity = humidity;
         }
 
-        public int getCloud() {
+        public double getCloud() {
             return cloud;
         }
 
-        public void setCloud(int cloud) {
+        public void setCloud(double cloud) {
             this.cloud = cloud;
         }
 
@@ -773,67 +773,67 @@ public class HourlyWeatherResponseModel {
             this.heatindex_f = heatindex_f;
         }
 
-        public double getDewpoint_c() {
-            return dewpoint_c;
+        public double getDewpodouble_c() {
+            return dewpodouble_c;
         }
 
-        public void setDewpoint_c(double dewpoint_c) {
-            this.dewpoint_c = dewpoint_c;
+        public void setDewpodouble_c(double dewpodouble_c) {
+            this.dewpodouble_c = dewpodouble_c;
         }
 
-        public double getDewpoint_f() {
-            return dewpoint_f;
+        public double getDewpodouble_f() {
+            return dewpodouble_f;
         }
 
-        public void setDewpoint_f(double dewpoint_f) {
-            this.dewpoint_f = dewpoint_f;
+        public void setDewpodouble_f(double dewpodouble_f) {
+            this.dewpodouble_f = dewpodouble_f;
         }
 
-        public int getWill_it_rain() {
+        public double getWill_it_rain() {
             return will_it_rain;
         }
 
-        public void setWill_it_rain(int will_it_rain) {
+        public void setWill_it_rain(double will_it_rain) {
             this.will_it_rain = will_it_rain;
         }
 
-        public int getChance_of_rain() {
+        public double getChance_of_rain() {
             return chance_of_rain;
         }
 
-        public void setChance_of_rain(int chance_of_rain) {
+        public void setChance_of_rain(double chance_of_rain) {
             this.chance_of_rain = chance_of_rain;
         }
 
-        public int getWill_it_snow() {
+        public double getWill_it_snow() {
             return will_it_snow;
         }
 
-        public void setWill_it_snow(int will_it_snow) {
+        public void setWill_it_snow(double will_it_snow) {
             this.will_it_snow = will_it_snow;
         }
 
-        public int getChance_of_snow() {
+        public double getChance_of_snow() {
             return chance_of_snow;
         }
 
-        public void setChance_of_snow(int chance_of_snow) {
+        public void setChance_of_snow(double chance_of_snow) {
             this.chance_of_snow = chance_of_snow;
         }
 
-        public int getVis_km() {
+        public double getVis_km() {
             return vis_km;
         }
 
-        public void setVis_km(int vis_km) {
+        public void setVis_km(double vis_km) {
             this.vis_km = vis_km;
         }
 
-        public int getVis_miles() {
+        public double getVis_miles() {
             return vis_miles;
         }
 
-        public void setVis_miles(int vis_miles) {
+        public void setVis_miles(double vis_miles) {
             this.vis_miles = vis_miles;
         }
 
@@ -853,11 +853,11 @@ public class HourlyWeatherResponseModel {
             this.gust_kph = gust_kph;
         }
 
-        public int getUv() {
+        public double getUv() {
             return uv;
         }
 
-        public void setUv(int uv) {
+        public void setUv(double uv) {
             this.uv = uv;
         }
     }
@@ -869,7 +869,7 @@ public class HourlyWeatherResponseModel {
         public double lat;
         public double lon;
         public String tz_id;
-        public int localtime_epoch;
+        public double localtime_epoch;
         public String localtime;
 
         public String getName() {
@@ -920,11 +920,11 @@ public class HourlyWeatherResponseModel {
             this.tz_id = tz_id;
         }
 
-        public int getLocaltime_epoch() {
+        public double getLocaltime_epoch() {
             return localtime_epoch;
         }
 
-        public void setLocaltime_epoch(int localtime_epoch) {
+        public void setLocaltime_epoch(double localtime_epoch) {
             this.localtime_epoch = localtime_epoch;
         }
 

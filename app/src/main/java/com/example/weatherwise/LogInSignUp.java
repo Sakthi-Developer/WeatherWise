@@ -3,6 +3,7 @@
  import android.annotation.SuppressLint;
  import android.app.Dialog;
  import android.content.Intent;
+ import android.graphics.Typeface;
  import android.os.Bundle;
  import android.os.Handler;
  import android.text.InputType;
@@ -51,6 +52,8 @@
          }
 
          TabLayout log_in_tab = findViewById(R.id.log_in_tab);
+         TabLayout.Tab sign_up_tab = log_in_tab.getTabAt(1);
+         log_in_tab.selectTab(sign_up_tab);
          EditText email_text = findViewById(R.id.emailText);
          EditText password_text = findViewById(R.id.passwordText);
          LinearLayout submit = findViewById(R.id.submit_button);
@@ -93,6 +96,7 @@
              @SuppressLint("CutPasteId") ImageView imageView = findViewById(R.id.eye);
              if (VIEW_STATUS) {
                  password_text.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                 password_text.setTypeface(Typeface.create("gilroy_regular", Typeface.NORMAL));
                  imageView.setImageResource(R.drawable.hidden);
                  VIEW_STATUS = false;
 

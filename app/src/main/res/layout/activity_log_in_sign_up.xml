@@ -121,7 +121,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="17sp"
-                android:text="@string/log_in"/>
+                android:text="@string/sign_up"/>
         </LinearLayout>
 
         <TextView
