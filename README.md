@@ -26,4 +26,4 @@ To run the Weather Wise app locally, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/weather-wise.git
+   git clone https://github.com/Sakthi-Developer/weather-wise.git
