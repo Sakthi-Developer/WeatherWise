@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "30329261453",
+    "project_id": "weather-wise-f35da",
+    "storage_bucket": "weather-wise-f35da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30329261453:android:2f98bd6bfc9809628d01c4",
+        "android_client_info": {
+          "package_name": "com.example.weatherwise"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "30329261453-24hgqt5e7g1eoubjo3uri0uec674omap.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaTUU7Bn1FtrKNjSnOmfDVPer9gE6nZBk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "30329261453-24hgqt5e7g1eoubjo3uri0uec674omap.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

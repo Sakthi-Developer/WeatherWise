@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">WeatherWise</string>
+    <string name="weather_background">WeatherBackground</string>
+    <string name="Date">25 January</string>
+    <string name="Day">Wednesday</string>
+    <string name="_10">-10°</string>
+    <string name="now">NOW</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="log_in_hint">Powered by Sakthi</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="try_other_methods">Try other methods</string>
+    <string name="invalid_credentials"> * Invalid Credentials</string>
+</resources>
