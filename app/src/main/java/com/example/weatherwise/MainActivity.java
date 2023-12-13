@@ -34,6 +34,10 @@ import com.example.weatherwise.ApiPackage.ApiClient;
 import com.example.weatherwise.ApiPackage.ApiInterface;
 import com.example.weatherwise.ApiPackage.CurrentWeatherResponseModel;
 import com.example.weatherwise.ApiPackage.HourlyWeatherResponseModel;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -61,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
     ApiInterface apiInterface;
     Adapter adapter;
     RelativeLayout logout_button;
+    GoogleSignInOptions googleSignInOptions;
+    GoogleSignInClient googleSignInClient;
     ArrayList<HourlyWeatherResponseModel.Hour> foreCastList;
 
     @Override
@@ -68,6 +74,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        googleSignInClient = GoogleSignIn.getClient(MainActivity.this, googleSignInOptions);
+
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if (account!=null){
+            String name = account.getDisplayName();
+            Log.d("UserName", Objects.requireNonNull(name));
+        }
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ShapeableImageView shapeableImageView = findViewById(R.id.background_image);
 
         Glide.with(this).load(R.drawable.evening_forest).centerCrop().into(shapeableImageView);
@@ -75,49 +90,42 @@ public class MainActivity extends AppCompatActivity {
         getCurrentLocation();
 
         logout_button = findViewById(R.id.logout_button);
-        logout_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        logout_button.setOnClickListener(v -> {
 
 
-                View logOutDialog = LayoutInflater.from(MainActivity.this).inflate(R.layout.logout_dialog, null);
+            View logOutDialog = LayoutInflater.from(MainActivity.this).inflate(R.layout.logout_dialog, null);
 
-                Dialog dialog_logout = new Dialog(MainActivity.this);
-                dialog_logout.setContentView(logOutDialog);
-                Objects.requireNonNull(dialog_logout.getWindow()).setGravity(Gravity.CENTER);
-                Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.dialog_background, null);
-                dialog_logout.getWindow().setBackgroundDrawable(drawable);
-                dialog_logout.getWindow().setLayout(700,530);
-                dialog_logout.show();
-                TextView textView = dialog_logout.findViewById(R.id.textView);
-                Button button = dialog_logout.findViewById(R.id.button);
-                Button button1 = dialog_logout.findViewById(R.id.button1);
+            Dialog dialog_logout = new Dialog(MainActivity.this);
+            dialog_logout.setContentView(logOutDialog);
+            Objects.requireNonNull(dialog_logout.getWindow()).setGravity(Gravity.CENTER);
+            Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.dialog_background, null);
+            dialog_logout.getWindow().setBackgroundDrawable(drawable);
+            dialog_logout.getWindow().setLayout(700,530);
+            dialog_logout.getWindow().setGravity(Gravity.CENTER);
+            dialog_logout.show();
 
-                button.setOnClickListener(v1 -> {
-                    dialog_logout.dismiss();
-                    customLoderDialog.show();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
+            Button button = dialog_logout.findViewById(R.id.button);
+            Button button1 = dialog_logout.findViewById(R.id.button1);
 
-                            if (FirebaseAuthManager.getInstance().signOut()) {
-                                customLoderDialog.dismiss();
-                                startActivity(new Intent(MainActivity.this, LogInSignUp.class));
-                            }
+            button.setOnClickListener(v1 -> {
+                dialog_logout.dismiss();
+                customLoderDialog.show();
+                new Handler().postDelayed(() -> {
 
-                        }
-                    }, 2000);
+                    if (FirebaseAuthManager.getInstance().signOut()) {
+                        customLoderDialog.dismiss();
+                        Log.d("stat", String.valueOf(FirebaseAuthManager.getInstance().signOut()));
+                        startActivity(new Intent(MainActivity.this, LogInSignUp.class));
 
-                });
-
-                button1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog_logout.dismiss();
+                        googleSignInClient.signOut();
                     }
-                });
 
-            }
+                }, 1000);
+
+            });
+
+            button1.setOnClickListener(v12 -> dialog_logout.dismiss());
+
         });
 
     }
@@ -139,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
                         if (!(isLocationEnabled(this))){
 
                                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 this.startActivity(intent);
 
                         }

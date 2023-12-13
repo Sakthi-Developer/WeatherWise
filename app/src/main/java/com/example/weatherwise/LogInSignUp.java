@@ -18,6 +18,12 @@
 
  import androidx.appcompat.app.AppCompatActivity;
 
+ import com.google.android.gms.auth.api.signin.GoogleSignIn;
+ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+ import com.google.android.gms.common.api.ApiException;
+ import com.google.android.gms.tasks.Task;
  import com.google.android.material.tabs.TabLayout;
  import com.google.firebase.auth.FirebaseUser;
 
@@ -30,6 +36,9 @@
      private TextView warning;
      private FirebaseAuthManager authManager;
      public Dialog loder_dialog;
+     public ImageView google, facebook, microsoft;
+     GoogleSignInOptions googleSignInOptions;
+     GoogleSignInClient googleSignInClient;
 
      @Override
      @SuppressLint({"MissingInflatedId", "LocalSuppress"})
@@ -49,6 +58,15 @@
              startActivity(new Intent(this, MainActivity.class));
              finish();
 
+         } else {
+
+             GoogleSignInAccount lastAccountSignIn = GoogleSignIn.getLastSignedInAccount(this);
+             if (lastAccountSignIn!=null){
+
+                 startActivity(new Intent(this, MainActivity.class));
+                 finish();
+
+             }
          }
 
          TabLayout log_in_tab = findViewById(R.id.log_in_tab);
@@ -60,6 +78,12 @@
          TextView submit_text = findViewById(R.id.log_sign);
          ImageView eye = findViewById(R.id.eye);
          warning = findViewById(R.id.warning);
+         google = findViewById(R.id.google);
+         microsoft = findViewById(R.id.microsoft);
+         facebook = findViewById(R.id.facebook);
+
+         googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+         googleSignInClient = GoogleSignIn.getClient(LogInSignUp.this, googleSignInOptions);
 
 
 
@@ -130,6 +154,50 @@
              }
          });
 
+         google.setOnClickListener(v -> signWithGoogle());
+
+         microsoft.setOnClickListener(v -> {
+
+             Toast.makeText(this, "This Method will be available soon", Toast.LENGTH_LONG).show();
+
+         });
+
+         facebook.setOnClickListener(v -> {
+
+             Toast.makeText(this, "This Method will be available soon", Toast.LENGTH_LONG).show();
+
+         });
+
+     }
+
+     private void signWithGoogle() {
+
+         Intent signInIntent = googleSignInClient.getSignInIntent();
+
+         startActivityForResult(signInIntent, 1000);
+     }
+
+     @Override
+     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+         super.onActivityResult(requestCode, resultCode, data);
+         if (requestCode == 1000){
+             Task<GoogleSignInAccount> googleSignInAccountTask  = GoogleSignIn.getSignedInAccountFromIntent(data);
+            CustomLoderDialog dialog = new CustomLoderDialog(this);
+            dialog.show();
+             try {
+                 googleSignInAccountTask.getResult(ApiException.class);
+
+                 new Handler().postDelayed(() -> {
+                     dialog.dismiss();
+                     startActivity(new Intent(LogInSignUp.this, MainActivity.class));
+                     finish();
+                 },1000);
+
+             } catch (ApiException e) {
+                 dialog.dismiss();
+                 Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+             }
+         }
      }
 
      @SuppressLint("SetTextI18n")
@@ -154,7 +222,7 @@
                      customLoderDialog.dismiss();
                      startActivity(new Intent(LogInSignUp.this, MainActivity.class));
                      finish();
-                 },2000);
+                 },1000);
 
 
             } else {

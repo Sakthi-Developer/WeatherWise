@@ -175,7 +175,7 @@
                 android:id="@+id/microsoft"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="39dp"
                 android:src="@drawable/microsoft"
                 android:importantForAccessibility="no" />
 
