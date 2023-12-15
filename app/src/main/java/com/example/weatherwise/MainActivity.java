@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -93,14 +94,13 @@ public class MainActivity extends AppCompatActivity {
         logout_button.setOnClickListener(v -> {
 
 
-            View logOutDialog = LayoutInflater.from(MainActivity.this).inflate(R.layout.logout_dialog, null);
+            @SuppressLint("InflateParams") View logOutDialog = LayoutInflater.from(MainActivity.this).inflate(R.layout.logout_dialog, null);
 
             Dialog dialog_logout = new Dialog(MainActivity.this);
             dialog_logout.setContentView(logOutDialog);
-            Objects.requireNonNull(dialog_logout.getWindow()).setGravity(Gravity.CENTER);
             Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.dialog_background, null);
-            dialog_logout.getWindow().setBackgroundDrawable(drawable);
-            dialog_logout.getWindow().setLayout(700,530);
+            Objects.requireNonNull(dialog_logout.getWindow()).setBackgroundDrawable(drawable);
+            dialog_logout.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
             dialog_logout.getWindow().setGravity(Gravity.CENTER);
             dialog_logout.show();
 
@@ -146,8 +146,11 @@ public class MainActivity extends AppCompatActivity {
 
                         if (!(isLocationEnabled(this))){
 
+
+                            runOnUiThread(() -> {
                                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                                this.startActivity(intent);
+                                startActivity(intent);
+                            });
 
                         }
 
