@@ -46,10 +46,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_LOCATION = 2535;
-    TextView temperature;
-    TextView wind;
-    TextView pressure;
-    TextView humidity;
+    TextView temperature, wind, pressure, humidity;
     private double longitude, latitude;
     RecyclerView recyclerView;
     ApiInterface apiInterface;
@@ -74,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ShapeableImageView shapeableImageView = findViewById(R.id.background_image);
 
         Glide.with(this).load(R.drawable.evening_forest).centerCrop().into(shapeableImageView);
+        getCurrentLocation();
+
 
     }
 
@@ -185,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
                     recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL, false));
 
                     recyclerView.scrollToPosition(Integer.parseInt(time.substring(0,2)) - 1);
+
 
                 }else{
                     Log.d("Code when null", String.valueOf(response.code()));

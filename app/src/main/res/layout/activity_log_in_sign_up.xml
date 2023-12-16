@@ -95,7 +95,8 @@
                 android:layout_height="match_parent"
                 android:inputType="textPassword"
                 android:textColor="@color/white"
-                tools:ignore="TextFields" />
+                tools:ignore="TextFields"
+                android:importantForAutofill="no" />
 
             <ImageView
                 android:id="@+id/eye"
@@ -246,7 +247,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:importantForAccessibility="no"
-                android:padding="6dp"
+                android:padding="7dp"
                 android:src="@drawable/microsoft" />
 
             <TextView

@@ -9,11 +9,11 @@
     tools:context=".MainActivity">
 
     <ScrollView
-        android:overScrollMode="never"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
+        android:overScrollMode="never"
         android:scrollbars="none"
         tools:ignore="UselessParent">
 
@@ -24,11 +24,11 @@
 
     <RelativeLayout
         android:id="@+id/image_holder"
-        android:paddingStart="8dp"
-        android:paddingEnd="12dp"
-        android:paddingTop="8dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingStart="8dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="12dp">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/background_image"
@@ -42,26 +42,26 @@
         </com.google.android.material.imageview.ShapeableImageView>
 
         <LinearLayout
-            android:layout_marginTop="23dp"
-            android:layout_marginStart="19dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="23dp"
             android:orientation="horizontal"
             tools:ignore="RelativeOverlap">
         <TextView
             android:id="@+id/DateTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
             android:text="@string/Date"
             android:textColor="@color/white"
-            android:layout_marginEnd="5dp"
             android:textSize="19sp"
             android:textStyle="bold" />
 
         <TextView
-            android:layout_marginTop="1dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
             android:text="@string/Day"
             android:textColor="@color/white"
             android:textSize="19sp" />
@@ -101,10 +101,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
+                android:background="@drawable/round_corner_layout"
                 android:orientation="vertical"
-                android:background="@drawable/round_corner_layout">
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp">
 
                 <ImageView
                     android:layout_width="19dp"
@@ -116,11 +116,11 @@
                 <TextView
                     android:layout_width="98dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/gilroy_regular"
                     android:text="Wind"
                     android:textColor="@color/white"
                     android:textSize="19sp"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/gilroy_regular"
                     android:textStyle=""
                     tools:ignore="HardcodedText" />
 
@@ -128,12 +128,12 @@
                     android:id="@+id/windValue"
                     android:layout_width="98dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="25dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="25dp"
+                    android:fontFamily="@font/gilroy_regular"
                     android:text="5-8 km/h"
                     android:textColor="@color/white"
                     android:textSize="10sp"
-                    android:fontFamily="@font/gilroy_regular"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText,SmallSp" />
 
@@ -147,10 +147,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
+                android:background="@drawable/round_corner_layout"
                 android:orientation="vertical"
-                android:background="@drawable/round_corner_layout">
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp">
 
                 <ImageView
                     android:layout_width="19dp"
@@ -162,11 +162,11 @@
                 <TextView
                     android:layout_width="98dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/gilroy_regular"
                     android:text="Pressure"
                     android:textColor="@color/white"
                     android:textSize="19sp"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/gilroy_regular"
                     android:textStyle=""
                     tools:ignore="HardcodedText" />
 
@@ -174,12 +174,12 @@
                     android:id="@+id/pressureValue"
                     android:layout_width="98dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="25dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="25dp"
+                    android:fontFamily="@font/gilroy_regular"
                     android:text="1000 MB"
                     android:textColor="@color/white"
                     android:textSize="10sp"
-                    android:fontFamily="@font/gilroy_regular"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText,SmallSp" />
 
@@ -193,10 +193,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
+                android:background="@drawable/round_corner_layout"
                 android:orientation="vertical"
-                android:background="@drawable/round_corner_layout">
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp">
 
                 <ImageView
                     android:layout_width="19dp"
@@ -208,11 +208,11 @@
                 <TextView
                     android:layout_width="98dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/gilroy_regular"
                     android:text="Humidity"
                     android:textColor="@color/white"
                     android:textSize="19sp"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/gilroy_regular"
                     android:textStyle=""
                     tools:ignore="HardcodedText" />
 
@@ -220,12 +220,12 @@
                     android:id="@+id/humidityValue"
                     android:layout_width="98dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="25dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="25dp"
+                    android:fontFamily="@font/gilroy_regular"
                     android:text="51%"
                     android:textColor="@color/white"
                     android:textSize="10sp"
-                    android:fontFamily="@font/gilroy_regular"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText,SmallSp" />
 
@@ -235,19 +235,18 @@
         </LinearLayout>
 
         <LinearLayout
-            android:visibility="visible"
             android:id="@+id/recyclerLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="9dp"
             android:layout_marginEnd="12dp"
-            android:padding="10dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/time_zone_layout"
+            android:baselineAligned="false"
             android:gravity="center"
             android:orientation="horizontal"
-            android:baselineAligned="false"
+            android:padding="10dp"
             tools:ignore="RtlSymmetry">
 
             <androidx.recyclerview.widget.RecyclerView
