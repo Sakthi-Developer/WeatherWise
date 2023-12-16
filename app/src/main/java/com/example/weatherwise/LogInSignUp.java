@@ -36,7 +36,7 @@
      private TextView warning;
      private FirebaseAuthManager authManager;
      public Dialog loder_dialog;
-     public ImageView google, facebook, microsoft;
+     public LinearLayout google, facebook, microsoft;
      GoogleSignInOptions googleSignInOptions;
      GoogleSignInClient googleSignInClient;
 
