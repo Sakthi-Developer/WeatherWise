@@ -156,17 +156,9 @@
 
          google.setOnClickListener(v -> signWithGoogle());
 
-         microsoft.setOnClickListener(v -> {
+         microsoft.setOnClickListener(v -> Toast.makeText(this, "This Method will be available soon", Toast.LENGTH_LONG).show());
 
-             Toast.makeText(this, "This Method will be available soon", Toast.LENGTH_LONG).show();
-
-         });
-
-         facebook.setOnClickListener(v -> {
-
-             Toast.makeText(this, "This Method will be available soon", Toast.LENGTH_LONG).show();
-
-         });
+         facebook.setOnClickListener(v -> Toast.makeText(this, "This Method will be available soon", Toast.LENGTH_LONG).show());
 
      }
 

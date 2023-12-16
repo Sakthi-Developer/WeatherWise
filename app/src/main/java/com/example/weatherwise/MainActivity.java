@@ -2,23 +2,13 @@ package com.example.weatherwise;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.Drawable;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +16,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -65,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ApiInterface apiInterface;
     Adapter adapter;
-    RelativeLayout logout_button;
     GoogleSignInOptions googleSignInOptions;
     GoogleSignInClient googleSignInClient;
     ArrayList<HourlyWeatherResponseModel.Hour> foreCastList;
@@ -74,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googleSignInClient = GoogleSignIn.getClient(MainActivity.this, googleSignInOptions);
@@ -87,46 +74,6 @@ public class MainActivity extends AppCompatActivity {
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ShapeableImageView shapeableImageView = findViewById(R.id.background_image);
 
         Glide.with(this).load(R.drawable.evening_forest).centerCrop().into(shapeableImageView);
-        CustomLoderDialog customLoderDialog = new CustomLoderDialog(MainActivity.this);
-        getCurrentLocation();
-
-        logout_button = findViewById(R.id.logout_button);
-        logout_button.setOnClickListener(v -> {
-
-
-            @SuppressLint("InflateParams") View logOutDialog = LayoutInflater.from(MainActivity.this).inflate(R.layout.logout_dialog, null);
-
-            Dialog dialog_logout = new Dialog(MainActivity.this);
-            dialog_logout.setContentView(logOutDialog);
-            Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.dialog_background, null);
-            Objects.requireNonNull(dialog_logout.getWindow()).setBackgroundDrawable(drawable);
-            dialog_logout.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-            dialog_logout.getWindow().setGravity(Gravity.CENTER);
-            dialog_logout.show();
-
-            Button button = dialog_logout.findViewById(R.id.button);
-            Button button1 = dialog_logout.findViewById(R.id.button1);
-
-            button.setOnClickListener(v1 -> {
-                dialog_logout.dismiss();
-                customLoderDialog.show();
-                new Handler().postDelayed(() -> {
-
-                    if (FirebaseAuthManager.getInstance().signOut()) {
-                        customLoderDialog.dismiss();
-                        Log.d("stat", String.valueOf(FirebaseAuthManager.getInstance().signOut()));
-                        startActivity(new Intent(MainActivity.this, LogInSignUp.class));
-
-                        googleSignInClient.signOut();
-                    }
-
-                }, 1000);
-
-            });
-
-            button1.setOnClickListener(v12 -> dialog_logout.dismiss());
-
-        });
 
     }
 
@@ -159,9 +106,10 @@ public class MainActivity extends AppCompatActivity {
                     latitude = Objects.requireNonNull(location).getLatitude();
                     longitude = Objects.requireNonNull(location).getLongitude();
 
+                        getCurrentWeather(String.valueOf(latitude)+','+ longitude);
+                        getHourlyForecast(String.valueOf(latitude)+','+ longitude);
 
-                    getCurrentWeather(String.valueOf(latitude)+','+ longitude);
-                    getHourlyForecast(String.valueOf(latitude)+','+ longitude);
+
 
 
                 }).addOnFailureListener(this, e -> {
@@ -237,10 +185,6 @@ public class MainActivity extends AppCompatActivity {
                     recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL, false));
 
                     recyclerView.scrollToPosition(Integer.parseInt(time.substring(0,2)) - 1);
-                    LinearLayout layout = findViewById(R.id.recyclerLayout);
-
-                    layout.setVisibility(View.VISIBLE);
-                    logout_button.setVisibility(View.VISIBLE);
 
                 }else{
                     Log.d("Code when null", String.valueOf(response.code()));
